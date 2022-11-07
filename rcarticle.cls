@@ -166,6 +166,7 @@
 
 % Commandes permettant de définir les métadonnées dans le document principal
 \makeatletter
+\newcommand{\subtitle}[1]{\newcommand{\@subtitle}{#1}}
 \newcommand{\auteurun}[1]{\newcommand{\@auteurun}{#1}}
 	\newcommand{\affiliationun}[1]{\newcommand{\@affiliationun}{#1}}
 	\newcommand{\emailun}[1]{\newcommand{\@emailun}{#1}}
@@ -208,8 +209,13 @@
 	{%
 		\renewcommand{\baselinestretch}{1}%
 		\hyphenrules{nohyphenation}\raggedright\sffamily%
-	% Titre principal
+	% Titre principal et sous-titre
 		{\huge\bfseries\@title\par}
+		\ifdef{\@subtitle}{%
+			\vspace{3pt}%
+			{\Large\bfseries\@subtitle}%
+			\vspace{3pt}%
+		}{}
 		\rule{\textwidth}{2pt}\par
 		\vspace{25pt}%
 	% Auteurs
