@@ -158,6 +158,7 @@
 % ------------
 
 \RequirePackage{csquotes}
+\RequirePackage{needspace}
 \RequirePackage{xcolor}
 
 
