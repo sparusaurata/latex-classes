@@ -1,0 +1,93 @@
+%!TeX program = xelatex
+%!BIB program = biber
+%!TeX encoding = utf8
+
+\documentclass[english]{rcbeamer}
+
+% ----- Metadata --------------------------------------------------------
+
+\title[Short title]{
+	An example title
+}
+
+\subtitle{
+	With a nice subtitle underneath
+}
+
+\author[A.~Uthor, C.~Oauthor]{
+	A. Uthor\inst{1}
+	\and
+	C. Oauthor\inst{2}
+}
+
+\institute[Example U.]{
+	\inst{1} First Institute, Example University \\
+	\inst{2} Second  Institute, Example University
+}
+
+\date[Event]{
+	Example Event, \today
+}
+
+% -----------------------------------------------------------------------
+
+% Some custom configuration.
+
+%\bibliography{}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+	\tableofcontents
+\end{frame}
+
+
+\section{A section}
+%------------------
+
+
+\begin{frame}
+\frametitle{First frame}
+	Lorem ipsum dolor sit amet!
+	
+	\begin{block}{Title}
+	This is some boxed text.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Second frame}
+	Lorem ipsum dolor sit amet!
+	
+	\begin{enumerate}
+	\item One,
+	\item Two.
+	\end{enumerate}
+	
+	\begin{itemize}
+	\item Three,
+	\item Four.
+	\end{itemize}
+\end{frame}
+
+
+\section{Another section}
+%------------------
+
+\begin{frame}
+\frametitle{Third frame}
+	Lorem ipsum dolor sit amet! $3x + 1 = \alpha$.
+\end{frame}
+
+%\begin{frame}
+%\frametitle{References}
+%	\printbibliography[heading=none]
+%\end{frame}
+
+
+\end{document}
