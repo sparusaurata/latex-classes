@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{rcbeamer}[Rémy Cerda's beamer class]
+\ProvidesClass{rcbeamer}[Rémy Cerda's beamer class, adapted from metropolis 
+theme]
 
 \LoadClass{beamer}
 
