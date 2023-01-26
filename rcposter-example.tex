@@ -1,0 +1,136 @@
+%!TeX program = xelatex
+%!BIB program = biber
+%!TeX encoding = utf8
+
+\documentclass[25pt, a0paper, portrait]{rcposter}
+
+
+% ----- Metadata --------------------------------------------------------
+
+\title{%
+	Title of the poster with some very very long text\\
+	spanning over several lines
+}
+
+\author{A. Uthor, C. Oauthor}
+
+\institute{Great Science Institute, Example University}
+
+\titlegraphic{%
+	Insert\\
+	Some Logos\\
+	Here
+}
+
+
+% -----------------------------------------------------------------------
+
+% Some custom configuration.
+
+% You may want to redefine the main color of the poster.
+%\definecolor{postermain}{HTML}{325fba}
+
+% You may want to define colors for the boxes.
+%\definecolor{posterbox1}{HTML}{2277dd}
+%\definecolor{posterbox2}{HTML}{0099bb}
+
+% -----------------------------------------------------------------------
+
+
+\begin{document}
+
+\maketitle
+
+\sectiontitle{This Is A Section}
+%**************************************************************
+
+\begin{columns}
+	
+	\column{0.38}
+	%------------------------------------------------
+	\block{First block}{
+		
+		\lipsum[1]
+		
+	}
+	
+	\column{0.27}
+	%------------------------------------------------
+	\block{Second block}{
+			
+		\lipsum[2]
+		
+	}
+	
+	\column{0.35}
+	%------------------------------------------------
+	\block{Third block}{
+			
+		\lipsum[3]
+		
+	}
+	
+\end{columns}
+
+
+
+\sectiontitle{Another Section}
+%**************************************************************
+
+\begin{columns}
+	\column{0.6}
+	%------------------------------------------------
+	\block{A block with subcolumns}{
+		
+		First some text displayed over the two subcolumns,
+		and then two subcolumns containing untitled blocks.
+	}
+	
+	\begin{subcolumns}
+			
+		\subcolumn{0.5}
+		%---------------------------------------
+		\block{}{
+			
+			\lipsum[4]
+			
+		}
+		\note[width=7cm, targetoffsety=-9cm, rotate=5]
+		{A small note!}
+		
+		\subcolumn{0.5}
+		%---------------------------------------
+		\block{}{
+			
+			\lipsum[5]
+			
+		}
+	
+	\end{subcolumns}
+	
+	\column{0.4}
+	%------------------------------------------------
+	\block{A block with boxes}{
+		
+		You can put things in boxes:
+		
+		\posterbox{posterbox1}{A box}{%
+			Here's some very important material.
+		}
+		
+		\posterbox{posterbox2}{Another box}{%
+			Here's some more text, quite important too.
+		}
+		
+		% Because of the subcolumns in the previous column you might need to 
+		% add some vertical spacing (see what happens if you comment this line).
+		\vspace*{14cm}
+			
+	}
+	
+\end{columns}
+
+\sectiontitle{Another Section With Nothing In It}
+%**************************************************************
+
+\end{document}
