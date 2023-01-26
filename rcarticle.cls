@@ -246,7 +246,7 @@
 		\vspace*{\fill}\par
 	}
 	% Résumé
-	\ifdef{\abstract}{%
+	\ifdef{\@abstract}{%
 		\vspace{9pt}\small%
 		{\sffamily\bfseries\abstractname. —} \@abstract\par
 	}{}
