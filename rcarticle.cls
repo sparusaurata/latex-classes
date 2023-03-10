@@ -111,6 +111,18 @@
 	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
 	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\
  		{\mdseries(##3)}\theorem@separator]}
+\renewtheoremstyle{nonumberplain}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\theorem@separator]}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\
+ 		{\mdseries(##3)}\theorem@separator]}
+\newtheoremstyle{noparplain}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\
+ 		{\mdseries ##3}\theorem@separator]}
+\newtheoremstyle{noparnonumberplain}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\theorem@separator]}%
+	{\item[\hskip\labelsep \theorem@headerfont ##1\
+ 		{\mdseries ##3}\theorem@separator]}
 % Déclaration des environnements de théorèmes
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
