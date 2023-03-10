@@ -33,6 +33,8 @@
 \setmainlanguage{english}
 \setotherlanguage{french}
 
+\RequirePackage{xspace}
+
 
 % Mise en forme
 % -------------
