@@ -268,7 +268,8 @@
 	% Table des matières
 	\rule{\textwidth}{1pt}\vspace{-18pt}
 	\tableofcontents
-	\rule{\textwidth}{1pt}\par
+	\vspace{5pt}
+	\rule{\textwidth}{1pt}\vspace{10pt}\par
 }
 \makeatother
 
