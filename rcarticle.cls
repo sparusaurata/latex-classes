@@ -222,10 +222,10 @@
 	\setlength{\parindent}{0pt}%
 	\vspace*{1ex}%
 	{%
-		\renewcommand{\baselinestretch}{1}%
 		\hyphenrules{nohyphenation}\raggedright\sffamily%
 	% Titre principal et sous-titre
-		{\huge\bfseries\@title\par}
+		{\renewcommand{\baselinestretch}{1}%
+		\huge\bfseries\@title\par}
 		\ifdef{\@subtitle}{%
 			\vspace{3pt}%
 			{\Large\bfseries\@subtitle}%
