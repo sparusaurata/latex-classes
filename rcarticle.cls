@@ -228,8 +228,7 @@
 		{\huge\bfseries\@title\par}
 		\ifdef{\@subtitle}{%
 			\vspace{5pt}%
-			{\renewcommand{\baselinestretch}{0.9}%
-			\Large\bfseries\@subtitle\par}%
+			{\Large\bfseries\@subtitle\par}%
 			\vspace{3pt}%
 		}{}
 		\rule{\textwidth}{2pt}\par
