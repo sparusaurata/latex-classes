@@ -3,6 +3,13 @@
 
 \LoadClass[12pt]{article}
 
+\newif\ifrcshorttitle
+\rcshorttitlefalse
+\DeclareOption{shorttitle}{\rcshorttitletrue}
+\ProcessOptions
+
+\RequirePackage{etoolbox}
+\RequirePackage{ifthen}
 \RequirePackage{lipsum}
 
 
@@ -200,7 +207,7 @@
 \makeatother
 
 % \maketitle personnalisé
-\RequirePackage{fontawesome,academicons,etoolbox,ifthen}
+\RequirePackage{fontawesome,academicons}
 \newcommand{\iconeauteur}[2][1]{\makebox[1.6em][l]{\hspace*{1pt}\makebox[1em]{\scalebox{#1}{#2}}}}
 % ... commande affichant les infos d'un auteur
 \newcommand{\auteur}[4]{
@@ -218,7 +225,7 @@
 % ... commande produisant le titre complet
 \makeatletter
 \renewcommand{\@maketitle}{%
-	\thispagestyle{empty}%
+	\ifrcshorttitle{}\else\thispagestyle{empty}\fi%
 	\setlength{\parindent}{0pt}%
 	\vspace*{1ex}%
 	{%
@@ -231,7 +238,7 @@
 			{\Large\bfseries\@subtitle\par}%
 			\vspace{3pt}%
 		}{}
-		\rule{\textwidth}{2pt}\par
+		\ifrcshorttitle{}\else\rule{\textwidth}{2pt}\fi\par
 		\vspace{25pt}%
 	% Auteurs
 		\ifdef{\@auteurun}{\auteur%
@@ -257,19 +264,24 @@
 		\@publiinfo\par
 		\vspace{5pt}
 		{\sffamily\small\@copyrightinfo\par}
-		\vspace*{\fill}\par
+		\ifrcshorttitle\vspace*{5pt}
+		\else\vspace*{\fill}%
+		\fi\par
 	}
-	% Résumé
-	\ifdef{\@abstract}{%
-		\vspace{9pt}\small%
-		{\sffamily\bfseries\abstractname. —} \@abstract\par
-	}{}
-	\clearpage%
-	% Table des matières
-	\rule{\textwidth}{1pt}\vspace{-18pt}
-	\tableofcontents
+	\ifrcshorttitle{}\else
+		% Résumé
+		\ifdef{\@abstract}{%
+			\vspace{9pt}\small%
+			{\sffamily\bfseries\abstractname. —} \@abstract\par
+		}{}
+		\clearpage%
+		% Table des matières
+		\rule{\textwidth}{1pt}\vspace{-15pt}
+		\tableofcontents
+		\vspace*{5pt}
+	\fi%
 	\vspace{5pt}
-	\rule{\textwidth}{1pt}\vspace{10pt}\par
+	\rule{\textwidth}{1pt}\vspace{10pt}\par\vspace{10pt}
 }
 \makeatother
 
