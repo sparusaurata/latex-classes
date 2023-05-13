@@ -3,9 +3,10 @@
 
 \LoadClass[12pt]{article}
 
-\newif\ifrcshorttitle
-\rcshorttitlefalse
+\newif\ifrcshorttitle \rcshorttitlefalse
+\newif\ifrcnarrowlines \rcnarrowlinesfalse
 \DeclareOption{shorttitle}{\rcshorttitletrue}
+\DeclareOption{narrowlines}{\rcnarrowlinestrue}
 \ProcessOptions
 
 \RequirePackage{etoolbox}
@@ -53,8 +54,17 @@
 	top=2cm, bottom=1.5cm, includefoot
 	}
 
-\RequirePackage[skip=.3\baselineskip plus 1pt]{parskip}
-\renewcommand{\baselinestretch}{1.3}
+\ifrcnarrowlines
+	\RequirePackage[skip=.2\baselineskip plus 1pt]{parskip}
+	\else 
+	\RequirePackage[skip=.3\baselineskip plus 1pt]{parskip}
+\fi
+
+\ifrcnarrowlines
+	\renewcommand{\baselinestretch}{1.25}
+	\else
+	\renewcommand{\baselinestretch}{1.3}
+\fi
 
 \RequirePackage{titlesec}
 \titleformat{\section}%
@@ -65,17 +75,32 @@
 	{\large\sffamily}%
 	{\llap{\makebox[30pt][l]{\raggedleft\thesubsection}}}{0pt}%
 	{}[]
-\titlespacing{\section}{0pt}{*6}{*3}
-\titlespacing{\subsection}{0pt}{*5}{*3}
+\ifrcnarrowlines
+	\titlespacing{\section}{0pt}{*3}{*3}
+	\titlespacing{\subsection}{0pt}{*2.5}{*1.5}
+	\else
+	\titlespacing{\section}{0pt}{*6}{*3}
+	\titlespacing{\subsection}{0pt}{*5}{*3}
+\fi
 
 \RequirePackage{enumitem}
 \setlist{
-	topsep		= .5\parskip,	% séparation verticale autour de la liste
-	itemsep		= .5\parskip,	% séparation verticale entre les items
-	parsep		= .5\parskip,	% séparation verticale entre les § d'un item
 	itemindent	= 0em,			% indentation du texte
 	leftmargin	= 1.5em,		% distance horizontale totale à gauche du texte
 }
+\ifrcnarrowlines
+	\setlist{
+		topsep		= .3\parskip,	% séparation verticale autour de la liste
+		itemsep		= .3\parskip,	% séparation verticale entre les items
+		parsep		= .3\parskip,	% séparation verticale entre les § d'un item
+	}
+	\else 
+	\setlist{
+		topsep		= .5\parskip,	% séparation verticale autour de la liste
+		itemsep		= .5\parskip,	% séparation verticale entre les items
+		parsep		= .5\parskip,	% séparation verticale entre les § d'un item
+	}
+\fi 
 \setlist[enumerate]{
 	align		= left,
 	labelwidth	= 1.1em,
@@ -111,8 +136,13 @@
 \newcommand{\qedhere}{\qed}
 % Formatage des théorèmes
 \theorembodyfont{\normalfont}
-\theorempreskip{\baselineskip}
-\theorempostskip{\baselineskip}
+\ifrcnarrowlines
+	\theorempreskip{2.5\parskip}
+	\theorempostskip{2.5\parskip}
+	\else
+	\theorempreskip{3\parskip}
+	\theorempostskip{3\parskip}
+\fi
 %\theoremseparator{.\vspace{.1\baselineskip plus 1pt}}
 \theoremseparator{.}
 \theoremheaderfont{\sffamily\bfseries}
@@ -149,7 +179,8 @@
 \theoremstyle{nonumberplainreplace}
 \theoremindent1.5em
 \theorembodyfont{\small}
-\theorempreskip{-0.5\baselineskip}
+\ifrcnarrowlines{}\else\theorempreskip{-\parskip}\fi
+\ifrcnarrowlines\theorempostskip{3\parskip}\else{}\fi 
 \theoremsymbol{\ensuremath{\smwhtdiamond}}
 \newtheorem{proof}{Proof}
 
