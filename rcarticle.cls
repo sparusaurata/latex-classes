@@ -3,9 +3,14 @@
 
 \LoadClass[12pt]{article}
 
+% Option for a short title (no abstract, no ToC, spans over ~half a page)
 \newif\ifrcshorttitle \rcshorttitlefalse
-\newif\ifrcnarrowlines \rcnarrowlinesfalse
 \DeclareOption{shorttitle}{\rcshorttitletrue}
+% Option for displaying authors in two columns
+\newif\ifrctwocolauth \rctwocolauthfalse
+\DeclareOption{twocolauth}{\rctwocolauthtrue}
+% Option for narrower lines (this shrinks several vertical skips)
+\newif\ifrcnarrowlines \rcnarrowlinesfalse
 \DeclareOption{narrowlines}{\rcnarrowlinestrue}
 \ProcessOptions
 
@@ -117,6 +122,13 @@
 	label		= \ensuremath{\blacktriangleright}
 }
 
+\RequirePackage{caption}
+\DeclareCaptionLabelSeparator{dotcad}{. — }
+\captionsetup{
+	labelfont	= {sf,bf},
+	labelsep	= dotcad
+}
+
 
 % Mathématiques
 % -------------
@@ -214,8 +226,8 @@
 \RequirePackage{xcolor}
 
 
-% Métadonnées
-% -----------
+% Métadonnées et titre principal
+% ------------------------------
 
 % Commandes permettant de définir les métadonnées dans le document principal
 \makeatletter
@@ -237,10 +249,11 @@
 \renewcommand{\abstract}[1]{\newcommand{\@abstract}{#1}}
 \makeatother
 
-% \maketitle personnalisé
 \RequirePackage{fontawesome,academicons}
 \newcommand{\iconeauteur}[2][1]{\makebox[1.6em][l]{\hspace*{1pt}\makebox[1em]{\scalebox{#1}{#2}}}}
-% ... commande affichant les infos d'un auteur
+
+% ... commandes affichant les infos d'un auteur
+
 \newcommand{\auteur}[4]{
 	{\large\bfseries #1}\par
 	\vspace*{2pt}%
@@ -251,9 +264,31 @@
 		{\iconeauteur[0.8]{\faEnvelope} \href{mailto:#3}{#3}\par}%
 	\ifthenelse{\equal{#4}{}}{}%
 		{\iconeauteur{\aiOrcid} \href{https://orcid.org/#4}{#4}\par}}%
-	\vspace{15pt}
+	\vspace*{15pt}
 }
+\makeatletter
+\newcommand{\printauteurun}{\auteur%
+	{\@auteurun}%
+	{\ifdef{\@affiliationun}{\@affiliationun}{}}%
+	{\ifdef{\@emailun}{\@emailun}{}}%
+	{\ifdef{\@orcidun}{\@orcidun}{}}%
+}
+\newcommand{\printauteurdeux}{\auteur%
+	{\@auteurdeux}%
+	{\ifdef{\@affiliationdeux}{\@affiliationdeux}{}}%
+	{\ifdef{\@emaildeux}{\@emaildeux}{}}%
+	{\ifdef{\@orciddeux}{\@orciddeux}{}}%
+}
+\newcommand{\printauteurtrois}{\auteur%
+	{\@auteurtrois}%
+	{\ifdef{\@affiliationtrois}{\@affiliationtrois}{}}%
+	{\ifdef{\@emailtrois}{\@emailtrois}{}}%
+	{\ifdef{\@orcidtrois}{\@orcidtrois}{}}%
+}
+\makeatother
+
 % ... commande produisant le titre complet
+
 \makeatletter
 \renewcommand{\@maketitle}{%
 	\ifrcshorttitle{}\else\thispagestyle{empty}\fi%
@@ -272,24 +307,20 @@
 		\ifrcshorttitle{}\else\rule{\textwidth}{2pt}\fi\par
 		\vspace{25pt}%
 	% Auteurs
-		\ifdef{\@auteurun}{\auteur%
-			{\@auteurun}%
-			{\ifdef{\@affiliationun}{\@affiliationun}{}}%
-			{\ifdef{\@emailun}{\@emailun}{}}%
-			{\ifdef{\@orcidun}{\@orcidun}{}}%
+		\ifdef{\@auteurun}{\ifrctwocolauth
+			\begin{minipage}[t]{0.45\textwidth}\printauteurun\end{minipage}%
+			\else\printauteurun\fi%
 		}{}
-		\ifdef{\@auteurdeux}{\auteur%
-			{\@auteurdeux}%
-			{\ifdef{\@affiliationdeux}{\@affiliationdeux}{}}%
-			{\ifdef{\@emaildeux}{\@emaildeux}{}}%
-			{\ifdef{\@orciddeux}{\@orciddeux}{}}%
+		\ifdef{\@auteurdeux}{\ifrctwocolauth\hspace{0.05\textwidth}%
+			\begin{minipage}[t]{0.45\textwidth}\printauteurdeux\end{minipage}%
+			\else\printauteurdeux\fi%
 		}{}
-		\ifdef{\@auteurtrois}{\auteur%
-			{\@auteurtrois}%
-			{\ifdef{\@affiliationtrois}{\@affiliationtrois}{}}%
-			{\ifdef{\@emailtrois}{\@emailtrois}{}}%
-			{\ifdef{\@orcidtrois}{\@orcidtrois}{}}%
+		\ifdef{\@auteurtrois}{\ifrctwocolauth\par
+			\begin{minipage}[t]{0.45\textwidth}\printauteurtrois\end{minipage}%
+			\hspace{0.05\textwidth}%
+			\else\printauteurtrois\fi%
 		}{}
+		\ifrctwocolauth\par\fi
 		\vspace{10pt}
 	% Informations sur l'article
 		\@publiinfo\par
@@ -317,6 +348,7 @@
 \makeatother
 
 % Liste des auteurs dans \auteurs
+
 \makeatletter
 \newcommand{\auteurs}{%
 	\ifdef{\@auteurun}{\@auteurun}{}%
@@ -324,6 +356,9 @@
 	\ifdef{\@auteurtrois}{, \@auteurtrois}{}%
 }
 \makeatother
+
+
+% Métadonnées PDF
 
 \RequirePackage{hyperref}
 \definecolor{linkcolor}{HTML}{063560}
