@@ -83,8 +83,9 @@ theme]
 
 \RequirePackage{unicode-math}
 \unimathsetup{warnings-off={mathtools-colon,mathtools-overbracket}}
-\setmathfont{Fira Math}
-\setmathfont{STIX Two Math}[range={"022C4}]
+\setmathfont{Libertinus Math}
+\setmathfont{Fira Math}[range={up,it,bb,"00040,"0221E}]
+\setmathfont{STIX Two Math}[range={cal,"022C4}]
 
 \AtBeginDocument{\renewcommand{\leq}{\leqslant}}
 \AtBeginDocument{\renewcommand{\geq}{\geqslant}}
@@ -103,13 +104,21 @@ theme]
 % Bibliographie
 % -------------
 
-\RequirePackage[style=alphabetic]{biblatex}
+\RequirePackage[style=authoryear]{biblatex}
 \ExecuteBibliographyOptions{sorting=nyt}
 
-\renewcommand{\bibfont}{\small}
+\renewcommand{\bibfont}{\scriptsize}
 
 
 % Miscellanées
 % ------------
 
 \RequirePackage{csquotes}
+
+\tikzset{
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}%
+  }
+}
