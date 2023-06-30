@@ -84,7 +84,7 @@ theme]
 \RequirePackage{unicode-math}
 \unimathsetup{warnings-off={mathtools-colon,mathtools-overbracket}}
 \setmathfont{Libertinus Math}
-\setmathfont{Fira Math}[range={up,it,bb,"00040,"0221E}]
+\setmathfont{Fira Math}[range={up,it,bfup,bb,"00040,"0221E}]
 \setmathfont{STIX Two Math}[range={cal,"022C4}]
 
 \AtBeginDocument{\renewcommand{\leq}{\leqslant}}
