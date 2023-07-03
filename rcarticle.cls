@@ -211,7 +211,10 @@
 % -------------
 
 \RequirePackage[style=alphabetic]{biblatex}
-\ExecuteBibliographyOptions{sorting=nyt}
+\ExecuteBibliographyOptions{
+	sorting=nyt,
+	maxnames=4,
+}
 
 \renewcommand{\bibfont}{\small}
 
