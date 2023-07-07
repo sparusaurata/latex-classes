@@ -88,7 +88,7 @@
 	\titlespacing{\subsection}{0pt}{*5}{*3}
 \fi
 
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 \setlist{
 	itemindent	= 0em,			% indentation du texte
 	leftmargin	= 1.5em,		% distance horizontale totale à gauche du texte
@@ -200,6 +200,11 @@
 \RequirePackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
+
+\usepackage{tikz-cd}
+\tikzcdset{
+	arrow style=math font
+}
 
 % Arbres de preuve
 \RequirePackage{ebproof}
