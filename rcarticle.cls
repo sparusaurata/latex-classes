@@ -52,12 +52,16 @@
 % Mise en forme
 % -------------
 
+% Global layout of the page
+
 \RequirePackage{geometry}
 \geometry{
 	a4paper, twoside,
 	inner=2.5cm, outer=3.5cm,
 	top=2cm, bottom=1.5cm, includefoot
 	}
+
+% Vertical spacing
 
 \ifrcnarrowlines
 	\RequirePackage[skip=.2\baselineskip plus 1pt]{parskip}
@@ -70,6 +74,8 @@
 	\else
 	\renewcommand{\baselinestretch}{1.3}
 \fi
+
+% Headings
 
 \RequirePackage{titlesec}
 \titleformat{\section}%
@@ -87,6 +93,8 @@
 	\titlespacing{\section}{0pt}{*6}{*3}
 	\titlespacing{\subsection}{0pt}{*5}{*3}
 \fi
+
+% Lists
 
 \RequirePackage[inline]{enumitem}
 \setlist{
@@ -121,6 +129,13 @@
 \setlist[itemize,1]{
 	label		= \ensuremath{\blacktriangleright}
 }
+
+% Floating elements (figures, tables...)
+
+\RequirePackage{float}
+\floatstyle{boxed}
+\restylefloat{table}
+\restylefloat{figure}
 
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{dotcad}{. — }
