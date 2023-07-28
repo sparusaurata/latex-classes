@@ -144,7 +144,8 @@
 \DeclareCaptionLabelSeparator{dotcad}{. — }
 \captionsetup{
 	labelfont	= {sf,bf},
-	labelsep	= dotcad
+	labelsep	= dotcad,
+	margin		= 1.5em,
 }
 
 
@@ -247,6 +248,7 @@
 % Miscellanées
 % ------------
 
+\RequirePackage{array}
 \RequirePackage{csquotes}
 \RequirePackage{needspace}
 \RequirePackage{xcolor}
