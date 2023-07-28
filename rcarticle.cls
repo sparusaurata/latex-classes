@@ -137,6 +137,9 @@
 \restylefloat{table}
 \restylefloat{figure}
 
+\RequirePackage{subcaption}
+\captionsetup{subrefformat=parens}
+
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{dotcad}{. — }
 \captionsetup{
