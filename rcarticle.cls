@@ -157,7 +157,7 @@
 \RequirePackage{unicode-math}
 \unimathsetup{warnings-off={mathtools-colon,mathtools-overbracket}}
 \setmathfont{Libertinus Math}
-\setmathfont{STIX Two Math}[range={"022C4}]
+\setmathfont{STIX Two Math}[range={"022C4,bb}]
 
 \AtBeginDocument{\renewcommand{\epsilon}{\varepsilon}}
 \AtBeginDocument{\renewcommand{\leq}{\leqslant}}
