@@ -411,6 +411,7 @@
 % -------------------
 
 \RequirePackage{cleveref}
+
 \crefname{thm}{Theorem}{Theorems}
 \crefname{lem}{Lemma}{Lemmas}
 \crefname{cor}{Corollary}{Corollaries}
@@ -419,3 +420,6 @@
 \crefname{exa}{Example}{Examples}
 \crefname{conj}{Conjecture}{Conjectures}
 \crefname{nota}{Notation}{Notations}
+
+\crefname{diagram}{diag.}{diags.}
+	\creflabelformat{diagram}{(#2#1#3)}
