@@ -165,6 +165,7 @@
 
 % Théorèmes
 \RequirePackage[hyperref,amsmath,thmmarks]{ntheorem}
+\RequirePackage{thmtools,thm-restate}
 \newcommand{\qedhere}{\qed}
 % Formatage des théorèmes
 \theorembodyfont{\normalfont}
@@ -196,14 +197,22 @@
  		{\mdseries ##3}\theorem@separator]}
 % Déclaration des environnements de théorèmes
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{defi}[thm]{Definition}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{exa}[thm]{Example}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{nota}[thm]{Notation}
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{lem}[thm]{Lemma}
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{defi}[thm]{Definition}
+%\newtheorem{rem}[thm]{Remark}
+%\newtheorem{exa}[thm]{Example}
+%\newtheorem{conj}[thm]{Conjecture}
+%\newtheorem{nota}[thm]{Notation}
+\declaretheorem[name=Theorem,	style=plain, within=section]{thm}
+\declaretheorem[name=Lemma,		style=plain, numberlike=thm]{lem}
+\declaretheorem[name=Corollary,	style=plain, numberlike=thm]{cor}
+\declaretheorem[name=Definition,style=plain, numberlike=thm]{defi}
+\declaretheorem[name=Remark,	style=plain, numberlike=thm]{rem}
+\declaretheorem[name=Example,	style=plain, numberlike=thm]{exa}
+\declaretheorem[name=Conjecture,style=plain, numberlike=thm]{conj}
+\declaretheorem[name=Notation,	style=plain, numberlike=thm]{nota}
 % Et l'environnement pour les preuves
 \newtheoremstyle{nonumberplainreplace}%
 	{\item[\theorem@headerfont\hskip\labelsep ##1\theorem@separator]}%
@@ -214,7 +223,8 @@
 \ifrcnarrowlines{}\else\theorempreskip{-\parskip}\fi
 \ifrcnarrowlines\theorempostskip{3\parskip}\else{}\fi 
 \theoremsymbol{\ensuremath{\smwhtdiamond}}
-\newtheorem{proof}{Proof}
+%\newtheorem{proof}{Proof}
+\declaretheorem[name=Proof,		style=nonumberplainreplace]{proof}
 
 % Graphismes
 \RequirePackage{tikz}
