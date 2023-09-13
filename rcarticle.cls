@@ -249,6 +249,7 @@
 \ExecuteBibliographyOptions{
 	sorting=nyt,
 	maxnames=4,
+	useprefix,
 }
 
 \renewcommand{\bibfont}{\small}
