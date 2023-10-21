@@ -205,7 +205,7 @@
 %\newtheorem{exa}[thm]{Example}
 %\newtheorem{conj}[thm]{Conjecture}
 %\newtheorem{nota}[thm]{Notation}
-\declaretheorem[name=Theorem,	style=plain, within=section]{thm}
+\declaretheorem[name=Theorem,	style=plain]{thm}
 \declaretheorem[name=Lemma,		style=plain, numberlike=thm]{lem}
 \declaretheorem[name=Corollary,	style=plain, numberlike=thm]{cor}
 \declaretheorem[name=Definition,style=plain, numberlike=thm]{defi}
