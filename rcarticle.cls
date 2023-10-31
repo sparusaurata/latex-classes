@@ -135,7 +135,7 @@
 	format 		= \co2,
 }
 \setlist[itemize,1]{
-	label		= \ensuremath{\blacktriangleright}
+	label		= \ensuremath{\mdlgblksquare}
 }
 
 % Floating elements (figures, tables...)
