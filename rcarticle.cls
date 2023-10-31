@@ -4,14 +4,21 @@
 \LoadClass[12pt]{article}
 
 % Option for a short title (no abstract, no ToC, spans over ~half a page)
+% Default: false (long title)
 \newif\ifrcshorttitle \rcshorttitlefalse
 \DeclareOption{shorttitle}{\rcshorttitletrue}
 % Option for displaying authors in two columns
+% Default: false (one column)
 \newif\ifrctwocolauth \rctwocolauthfalse
 \DeclareOption{twocolauth}{\rctwocolauthtrue}
 % Option for narrower lines (this shrinks several vertical skips)
+% Default: false (normal lines)
 \newif\ifrcnarrowlines \rcnarrowlinesfalse
 \DeclareOption{narrowlines}{\rcnarrowlinestrue}
+% Option to enable section-dependent theorem numbering
+% Default: true (theorems numbered according to sections)
+\newif\ifrcthminsec \rcthminsectrue
+\DeclareOption{thmnotinsec}{\rcthminsecfalse}
 \ProcessOptions
 
 \RequirePackage{etoolbox}
@@ -50,6 +57,7 @@
 \RequirePackage{xcolor}
 \definecolor{c1}{Hsb}{210, 1  , 0.5}
 \definecolor{c2}{Hsb}{210, 0.7, 0.8}
+\colorlet{c0}{black}
 \newcommand{\co}[1]{\color{c#1}}
 
 \RequirePackage{xspace}
@@ -213,7 +221,11 @@
 %\newtheorem{exa}[thm]{Example}
 %\newtheorem{conj}[thm]{Conjecture}
 %\newtheorem{nota}[thm]{Notation}
+\ifrcthminsec
 \declaretheorem[name=Theorem,	style=plain, within=section]{thm}
+\else 
+\declaretheorem[name=Theorem,	style=plain]{thm}
+\fi 
 \declaretheorem[name=Lemma,		style=plain, numberlike=thm]{lem}
 \declaretheorem[name=Corollary,	style=plain, numberlike=thm]{cor}
 \declaretheorem[name=Definition,style=plain, numberlike=thm]{defi}
@@ -337,7 +349,7 @@
 % ... commande produisant le titre complet
 
 \makeatletter
-\renewcommand{\@maketitle}{%
+\renewcommand{\@maketitle}{\co1
 	\ifrcshorttitle{}\else\thispagestyle{empty}\fi%
 	\setlength{\parindent}{0pt}%
 	\vspace*{1ex}%
@@ -383,7 +395,7 @@
 			\vspace{9pt}\small%
 			{\sffamily\bfseries\abstractname. —} \@abstract\par
 		}{}
-		\clearpage%
+		\clearpage\co0
 		% Table des matières
 		\rule{\textwidth}{1pt}\vspace{-15pt}
 		\tableofcontents
