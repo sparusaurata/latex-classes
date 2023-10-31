@@ -23,6 +23,7 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage{ifthen}
+\RequirePackage{chngcntr}
 \RequirePackage{lipsum}
 
 
@@ -180,11 +181,18 @@
 \AtBeginDocument{\renewcommand{\geq}{\geqslant}}
 
 % Théorèmes
+% ---------
+
 \RequirePackage[hyperref,amsmath,thmmarks]{ntheorem}
 \RequirePackage{thmtools,thm-restate}
 \newcommand{\qedhere}{\qed}
+
 % Formatage des théorèmes
+
 \theorembodyfont{\normalfont}
+\theoremseparator{.}
+\theoremheaderfont{\sffamily\bfseries}
+
 \ifrcnarrowlines
 	\theorempreskip{2.5\parskip}
 	\theorempostskip{2.5\parskip}
@@ -192,9 +200,9 @@
 	\theorempreskip{3\parskip}
 	\theorempostskip{3\parskip}
 \fi
-%\theoremseparator{.\vspace{.1\baselineskip plus 1pt}}
-\theoremseparator{.}
-\theoremheaderfont{\sffamily\bfseries}
+
+% Styles personnalisés
+
 \renewtheoremstyle{plain}%
 	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
 	{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\
@@ -211,28 +219,61 @@
 	{\item[\hskip\labelsep \theorem@headerfont ##1\theorem@separator]}%
 	{\item[\hskip\labelsep \theorem@headerfont ##1\
  		{\mdseries ##3}\theorem@separator]}
+
 % Déclaration des environnements de théorèmes
-\theoremstyle{plain}
-%\newtheorem{thm}{Theorem}[section]
-%\newtheorem{lem}[thm]{Lemma}
-%\newtheorem{cor}[thm]{Corollary}
-%\newtheorem{defi}[thm]{Definition}
-%\newtheorem{rem}[thm]{Remark}
-%\newtheorem{exa}[thm]{Example}
-%\newtheorem{conj}[thm]{Conjecture}
-%\newtheorem{nota}[thm]{Notation}
+
+% Hooks for all theorems
+\newcommand{\thmpre}{\counterwithin{equation}{thm}}
+\newcommand{\thmpost}{\counterwithout{equation}{thm}}
+
 \ifrcthminsec
-\declaretheorem[name=Theorem,	style=plain, within=section]{thm}
+\declaretheorem[	name=Theorem,
+	style=plain,
+	within=section,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{thm}
 \else 
-\declaretheorem[name=Theorem,	style=plain]{thm}
+\declaretheorem[	name=Theorem,
+	style=plain,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{thm}
 \fi 
-\declaretheorem[name=Lemma,		style=plain, numberlike=thm]{lem}
-\declaretheorem[name=Corollary,	style=plain, numberlike=thm]{cor}
-\declaretheorem[name=Definition,style=plain, numberlike=thm]{defi}
-\declaretheorem[name=Remark,	style=plain, numberlike=thm]{rem}
-\declaretheorem[name=Example,	style=plain, numberlike=thm]{exa}
-\declaretheorem[name=Conjecture,style=plain, numberlike=thm]{conj}
-\declaretheorem[name=Notation,	style=plain, numberlike=thm]{nota}
+\declaretheorem[	name=Lemma,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{lem}
+\declaretheorem[	name=Corollary,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{cor}
+\declaretheorem[	name=Definition,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{defi}
+\declaretheorem[	name=Remark,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{rem}
+\declaretheorem[	name=Example,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{exa}
+\declaretheorem[	name=Conjecture,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{conj}
+\declaretheorem[	name=Notation,
+	style=plain,
+	numberlike=thm,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{nota}
+
 % Et l'environnement pour les preuves
 \newtheoremstyle{nonumberplainreplace}%
 	{\item[\theorem@headerfont\hskip\labelsep ##1\theorem@separator]}%
@@ -243,8 +284,10 @@
 \ifrcnarrowlines{}\else\theorempreskip{-\parskip}\fi
 \ifrcnarrowlines\theorempostskip{3\parskip}\else{}\fi 
 \theoremsymbol{\ensuremath{\smwhtdiamond}}
-%\newtheorem{proof}{Proof}
-\declaretheorem[name=Proof,		style=nonumberplainreplace]{proof}
+\declaretheorem[	name=Proof,
+	style=nonumberplainreplace,
+	preheadhook=\thmpre, postfoothook=\thmpost,
+	]{proof}
 
 % Graphismes
 \RequirePackage{tikz}
