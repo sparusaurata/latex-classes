@@ -50,9 +50,7 @@
 \RequirePackage{xcolor}
 \definecolor{c1}{Hsb}{210, 1  , 0.5}
 \definecolor{c2}{Hsb}{210, 0.7, 0.8}
-% Sauver \c et la redéfinir
-\let\cedille\c
-\AtBeginDocument{\renewcommand{\c}[1]{\color{c#1}}}
+\newcommand{\co}[1]{\color{c#1}}
 
 \RequirePackage{xspace}
 
@@ -127,14 +125,14 @@
 	labelwidth	= 1.1em,
 	labelsep 	= 0.4em,
 	labelindent = !,
-	format 		= \sffamily\c2,
+	format 		= \sffamily\co2,
 }
 \setlist[itemize]{
 	align		= left,
 	labelwidth	= 1.0em,
 	labelsep 	= 0.4em,
 	labelindent = !,
-	format 		= \c2,
+	format 		= \co2,
 }
 \setlist[itemize,1]{
 	label		= \ensuremath{\blacktriangleright}
