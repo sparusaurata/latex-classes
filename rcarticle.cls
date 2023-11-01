@@ -283,7 +283,7 @@
 \theorembodyfont{\small}
 \ifrcnarrowlines{}\else\theorempreskip{-\parskip}\fi
 \ifrcnarrowlines\theorempostskip{3\parskip}\else{}\fi 
-\theoremsymbol{\ensuremath{\smwhtdiamond}}
+\theoremsymbol{\co1\ensuremath{\mdlgblkdiamond}}
 \declaretheorem[	name=Proof,
 	style=nonumberplainreplace,
 	preheadhook=\thmpre, postfoothook=\thmpost,
