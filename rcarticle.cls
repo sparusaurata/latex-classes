@@ -176,6 +176,8 @@
 \setmathfont{Libertinus Math}
 \setmathfont{STIX Two Math}[range={"022C4,bb}]
 
+\allowdisplaybreaks
+
 \AtBeginDocument{\renewcommand{\epsilon}{\varepsilon}}
 \AtBeginDocument{\renewcommand{\leq}{\leqslant}}
 \AtBeginDocument{\renewcommand{\geq}{\geqslant}}
