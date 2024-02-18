@@ -19,6 +19,11 @@ theme]
 
 % The main color of the template
 \definecolor{macouleur}{HTML}{00AAFF}
+\colorlet{color0}{white}
+\colorlet{color1}{macouleur}
+\colorlet{color2}{green}
+\RenewDocumentCommand \c {m} {\color{color#1}}
+\NewDocumentCommand \Emph {m} {{\color{macouleur}\textbf{#1}}}
 
 % Color definitions
 \setbeamercolor{normal text}{
@@ -52,6 +57,16 @@ theme]
 \setbeamercolor{itemize item}{fg=macouleur}  
 \setbeamertemplate{itemize item}[triangle]
 
+% ToC
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\vfill}
+  {\vskip\itemsep}
+  {}
+  {}
+\makeatother
+\setbeamerfont{subsection in toc}{size=\small}
+
 
 % Polices, caractères, langues
 % ----------------------------
@@ -74,6 +89,8 @@ theme]
 \RequirePackage{polyglossia}
 \setmainlanguage{english}
 \setotherlanguage{french}
+
+\RequirePackage{xspace}
 
 
 % Mathématiques
